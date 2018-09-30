@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World!</title>
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/flexboxgrid.css">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="row center-xs">
+        <div class="col-xs-12">
+          <h1 class="title">Mek Youtube</h1>
+        </div>
+      </div>
+    </header>
+    <div class="row center-xs">
+      <div class="col-xs-12 container-search">
+        <input type="text" placeholder="https://www.youtube.com/watch?v=f_HabhTXAcI">
+        <button>Buscar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    require('./renderer/renderer.js')
+  </script>
+</body>
+
+</html>

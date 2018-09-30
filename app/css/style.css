@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy');
+
+h1{
+    font-family: 'Luckiest Guy', cursive;
+    color:#ecf0f1;
+    text-shadow: -1px 0 #2c3e50, 2.5px 3px #2c3e50, -1px 0 #2c3e50, 0 -1px #2c3e50;
+    position: relative;
+    display: inline-block;
+}
+
+.title:before{
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 2px;
+    background: rgba(144, 232, 24, 1);
+    bottom: 0px;
+
+}
+.container-search input{
+    width: 100%;
+    text-align: center;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #4CAF50;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+.container-search button{
+    display: inline;
+    padding: 0px 10px;
+    margin-top: 10px;
+    font-size: 20px; 
+}
