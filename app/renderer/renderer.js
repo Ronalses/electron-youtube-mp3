@@ -61,7 +61,7 @@ function setVideoHtml(info) {
           </div>
           <div class="col-xs-12">
             <div class="meter">
-              <span style="width: 25%"></span>
+              <span style="width: 0%"></span>
             </div>
           </div>
         </div>
