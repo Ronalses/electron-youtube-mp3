@@ -39,10 +39,9 @@ h1{
     padding-top: 20px;
 }
 
-.video{
-    border: black 1px solid;
+.video {
+    margin-top: 10px;
 }
-
 .video-thumbnail{
     width: 100%;
 }
@@ -111,4 +110,17 @@ h1{
         inset 0 -2px 6px rgba(0,0,0,0.4);
     position: relative;
     overflow: hidden;
+}
+
+.video-btn-download{
+    background: transparent;
+    cursor: pointer;
+    padding: 0px;
+    border: 0px;
+}
+
+.video-check{
+    border: 1px solid;
+    border-radius: 15px;
+    padding: 3px;
 }

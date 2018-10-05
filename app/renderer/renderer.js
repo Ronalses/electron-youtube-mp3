@@ -39,7 +39,6 @@ function loading(state) {
 function setVideoHtml(info) {
     let optionsHtml = ``
     for (let format of info.formats) {
-        console.log(format)
         if (format.format_note !== 'DASH audio' && format.ext === 'mp4' && format.format_note !== 'medium' && format.format_note !== 'hd720') {
             optionsHtml += `<option value="${format.format_id}">${format.format_note}-${format.ext} | Tamaño: ${format.filesize}</option>`
         }
@@ -52,12 +51,23 @@ function setVideoHtml(info) {
             <img class="video-thumbnail" src="${info.thumbnail}" alt="">
           </div>
           <div class="col-xs-8">
-            <p class="video-title">${info.title}</p>
-            <select name="" id="">
-              ${optionsHtml}
-              <option value="mp3">Audio-Ext: Mp3</option>
-            </select>
-            <button class="video-btn-download">Decargar</button>
+            <div class="row">
+              <div class="col-xs-12">
+                <p class="video-title">${info.title}</p>
+              </div>
+              <div class="col-xs-8">
+                <select name="" id="">
+                    ${optionsHtml}
+                    <option value="mp3">Audio-Ext: Mp3</option>
+                </select>
+              </div>
+              <div class="col-xs-4">
+                <button class="video-btn-download">
+                  <img src="./img/arrow.png" width="20" class="video-img-arrow">
+                </button>
+                <img src="./img/check.png" width="20" class="video-check" style="display: none;">
+              </div>
+            </div>
           </div>
           <div class="col-xs-12">
             <div class="meter">
@@ -67,18 +77,30 @@ function setVideoHtml(info) {
         </div>
       </div> `
 
-    document.getElementById('video-list-container').innerHTML = html
+    document.getElementById('video-list-container').innerHTML = html + document.getElementById('video-list-container').innerHTML
 }
 
 document.addEventListener('click', (event) => {
 
-    if (!event.target.matches('.video-btn-download')) return
+    if (!event.target.matches('.video-img-arrow')) return
 
-    let formatId = event.path[1].querySelector('select').value
-    let idVideo = event.path[3].id
+    console.log(event.path)
+    let divVideo = event.path[6]
+    let formatId = divVideo.querySelector('select').value
+    let idVideo = divVideo.id
+
+    /* Hidden btn download */
+    divVideo.querySelector('.video-btn-download').disabled = true
+    divVideo.querySelector('select').disabled = true
+    console.log(divVideo.querySelector('.video-btn-download'))
 
     if (formatId !== 'm') {
-        youtube.download(`https://www.youtube.com/watch?v=${idVideo}`, formatId, progress(event.path[3]))
+        youtube.download(`https://www.youtube.com/watch?v=${idVideo}`, formatId, progress(divVideo))
+            .then(info => {
+                divVideo.querySelector('.video-btn-download').style.display = 'none'
+                divVideo.querySelector('.video-check').style.display = 'inline'
+            })
+            .catch(console.log)
     } else {
 
     }
@@ -88,6 +110,6 @@ function progress(element) {
     return function (percent) {
         console.log(`Avanzando ${percent}%`)
         console.log(document.querySelector('.meter span'))
-        document.querySelector('.meter span').style.width = `${percent}%`
+        element.querySelector('.meter span').style.width = `${percent}%`
     }
 }

@@ -14,7 +14,7 @@ const getInfo = async (url) => {
 const download = async (url, formatId, progress) => {
     return new Promise((resolve, reject) => {
 
-        // if (progress !== 'function') reject('The paramether is not a function')
+        if (!isFunction(progress)) reject('The paramether is not a function')
         youtubedl.getInfo(url, [], (err, infoVideo) => {
             if (err) reject(err)
 
@@ -33,9 +33,15 @@ const download = async (url, formatId, progress) => {
                 progress(percent)
             })
 
-            video.on('complete', resolve)
+            video.on('end', (info) => {
+                resolve(info)
+            })
         })
     })
+}
+
+function isFunction(functionToCheck) {
+    return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
 }
 
 /* function progress(info) {
