@@ -4,12 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Hello World!</title>
-  
+
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/flexboxgrid.css">
 </head>
 
 <body>
+  <div id="container-loading">
+    <div class="loader"></div>
+  </div>
+
   <div class="container">
     <header>
       <div class="row center-xs">
@@ -20,9 +24,11 @@
     </header>
     <div class="row center-xs">
       <div class="col-xs-12 container-search">
-        <input type="text" placeholder="https://www.youtube.com/watch?v=f_HabhTXAcI">
-        <button>Buscar</button>
+        <input id="search-input" type="text" placeholder="https://www.youtube.com/watch?v=f_HabhTXAcI">
+        <button id="search-btn">Buscar</button>
       </div>
+    </div>
+    <div class="row center-xs video-list-container" id="video-list-container">
     </div>
   </div>
 
