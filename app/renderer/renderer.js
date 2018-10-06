@@ -38,8 +38,9 @@ function loading(state) {
 
 function setVideoHtml(info) {
     let optionsHtml = ``
+    console.log(info.formats)
     for (let format of info.formats) {
-        if (format.format_note !== 'DASH audio' && format.ext === 'mp4' && format.format_note !== 'medium' && format.format_note !== 'hd720') {
+        if (format.ext === 'mp4') {
             optionsHtml += `<option value="${format.format_id}">${format.format_note}-${format.ext} | Tamaño: ${format.filesize}</option>`
         }
     }

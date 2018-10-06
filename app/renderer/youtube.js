@@ -19,6 +19,7 @@ const download = async (url, formatId, progress) => {
             if (err) reject(err)
 
             let size = 0
+            console.log('format id', formatId)
             const video = youtubedl(url, [`--format=${formatId}`], {})
 
             video.on('info', (info) => {
