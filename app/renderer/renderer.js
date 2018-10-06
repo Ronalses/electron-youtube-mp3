@@ -46,7 +46,7 @@ function setVideoHtml(info) {
     }
 
     let html = `
-    <div class="video col-xs-10" id='${info.display_id}'>
+    <div class="video col-xs-11" id='${info.display_id}'>
         <div class="row">
           <div class="col-xs-4">
             <img class="video-thumbnail" src="${info.thumbnail}" alt="">
